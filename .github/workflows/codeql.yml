@@ -55,29 +55,29 @@ jobs:
     - name: Build project
       run: mvn clean install
 
-    - name: Notify Success via RabbitMQ
-      uses: actions/amqp-publish@v1
+    - name: RabbitMQ Message Sender
+      # You may pin to the exact commit or the version.
+      # uses: eferraris/rabbit-sender@1d930c455105b2efc6a93df45f9443c153e4fdf7
+      uses: eferraris/rabbit-sender@v1.3
       with:
-        host: https://chatops4msa-rabb.soselab.tw/
-        port: 80
-        username: admin
-        password: soselab
-        exchange: ''
-        routingKey: receive-rabbitmq-service_code_scanning
-        message: "Build completed successfully!"
-      if: ${{ success() }}
-
-    - name: Notify Failure via RabbitMQ
-      uses: actions/amqp-publish@v1
-      with:
-        host: https://chatops4msa-rabb.soselab.tw/
-        port: 80
-        username: admin
-        password: soselab
-        exchange: ''
-        routingKey: receive-rabbitmq-service_code_scanning
-        message: "Build failed!"
-      if: ${{ failure() }}
+        # Rabbit Username
+        RABBIT_USERNAME: ${{ secrets.RABBIT_USERNAME }}
+        # Rabbit Password
+        RABBIT_PASSWORD: ${{ secrets.RABBIT_PASSWORD }}
+        # Rabbit Hostname
+        RABBIT_HOST: ${{ secrets.RABBIT_HOST }}
+        # RabbitMQ Port
+        RABBIT_PORT: 80
+        # Use SSL
+        RABBIT_USE_SSL: true
+        # Name for the queue
+        RABBIT_QUEUE_NAME: receive-rabbitmq-service_code_scanning
+        # Name for the exchange
+#         RABBIT_EXCHANGE_NAME: # optional
+        # Message to be sent
+        MESSAGE: test
+#         Durability for the queue
+        DURABLE: true
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
