@@ -67,7 +67,7 @@ jobs:
         # Rabbit Hostname
         RABBIT_HOST: ${{ secrets.RABBIT_HOST }}
         # RabbitMQ Port
-        RABBIT_PORT: 80
+        RABBIT_PORT: 5672
         # Use SSL
         RABBIT_USE_SSL: false
         # Name for the queue
