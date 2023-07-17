@@ -63,7 +63,7 @@ jobs:
         username: admin
         password: soselab
         exchange: ''
-        routingKey: receive-rabbitmq-on_prometheus_alert
+        routingKey: receive-rabbitmq-service_code_scanning
         message: "Build completed successfully!"
       if: ${{ success() }}
 
@@ -75,7 +75,7 @@ jobs:
         username: admin
         password: soselab
         exchange: ''
-        routingKey: receive-rabbitmq-on_prometheus_alert
+        routingKey: receive-rabbitmq-service_code_scanning
         message: "Build failed!"
       if: ${{ failure() }}
 
