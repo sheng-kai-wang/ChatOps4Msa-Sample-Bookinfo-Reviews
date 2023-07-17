@@ -69,7 +69,7 @@ jobs:
         # RabbitMQ Port
         RABBIT_PORT: 80
         # Use SSL
-        RABBIT_USE_SSL: true
+        RABBIT_USE_SSL: false
         # Name for the queue
         RABBIT_QUEUE_NAME: receive-rabbitmq-service_code_scanning
         # Name for the exchange
