@@ -52,8 +52,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
-    - name: Build project
-      run: mvn clean install
+#     - name: Build project
+#       run: mvn clean install
 
     - name: RabbitMQ Message Sender
       # You may pin to the exact commit or the version.
