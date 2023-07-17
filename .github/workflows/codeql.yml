@@ -88,7 +88,8 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         
-    - uses: sarisia/actions-status-discord@v1
+    - name: Send Message
+      uses: sarisia/actions-status-discord@v1
       if: always()
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
