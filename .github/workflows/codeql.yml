@@ -54,12 +54,7 @@ jobs:
 
 #     - name: Build project
 #       run: mvn clean install
-
-    - uses: sarisia/actions-status-discord@v1
-      if: always()
-      with:
-        webhook: https://discord.com/api/webhooks/1127309181905555477/jIW8TV7927qQ-Z96hkE5_Cb8QX6K5G5XX7M1Nhz2fVAB5tdCr0AsmnzRQermLMAhaHyI
-
+    
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -92,3 +87,8 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+        
+    - uses: sarisia/actions-status-discord@v1
+      if: always()
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
